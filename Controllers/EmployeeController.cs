@@ -173,10 +173,10 @@ namespace Manage.Controllers
             {
                 ModelState.AddModelError("Email", "Invalid Email.");
             }
-            //else if (_employeeDbContext.Employees.Any(emp => emp.Email == employeeChange.Email))
-            //{
-            //    ModelState.AddModelError("Email", "Email Name must be unique.");
-            //}
+            else if (_employeeDbContext.Employees.Any(emp => emp.Email == employeeChange.Email && emp.id != employeeChange.id))
+            {
+                ModelState.AddModelError("Email", "Email Name must be unique.");
+            }
 
             if (string.IsNullOrEmpty(employeeChange.UserName))
             {
